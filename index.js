@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const customerRoutes = require("./routes/CustomerRoutes");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 mongoose.set("strictQuery", true);
-mongoose.connect(
-  "mongodb+srv://sakshi:dbsakshi1234@cluster0.nkp4liz.mongodb.net/"
-);
+mongoose.connect(process.env.MONGO);
 const db = mongoose.connection;
 
 db.on("error", () => {
