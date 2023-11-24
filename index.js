@@ -8,7 +8,10 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 mongoose.set("strictQuery", true);
-mongoose.connect(process.env.MONGO);
+mongoose.connect(process.env.MONGO, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const db = mongoose.connection;
 
 db.on("error", () => {

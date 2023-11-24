@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const customerSchema = require("../schema/customerSchema");
+const bcrypt = require("bcrypt");
 
+const salt = 10;
 router.post("/create-customers", (req, res, next) => {
+  bcrypt.hash(req.body.password, salt);
   customerSchema.create(req.body, (err, data) => {
     if (err) {
       return next(err);
