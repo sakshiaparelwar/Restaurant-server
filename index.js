@@ -8,10 +8,16 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 mongoose.set("strictQuery", true);
-mongoose.connect(process.env.MONGO, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGO,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("connected to database myDb ;)");
+  }
+);
 const db = mongoose.connection;
 
 db.on("error", () => {
