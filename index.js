@@ -9,7 +9,7 @@ dotenv.config();
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
-  process.env.MONGO,
+  process.env.REACT_APP_MONGO,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
