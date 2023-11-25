@@ -10,9 +10,7 @@ dotenv.config();
 mongoose.set("strictQuery", true);
 mongoose.connect(
   process.env.MONGO,
-  {
-    useNewUrlParser: true,
-  },
+
   () => {
     console.log("connected to database ");
   }
