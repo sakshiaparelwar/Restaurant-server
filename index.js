@@ -15,7 +15,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
   () => {
-    console.log("connected to database myDb ;)");
+    console.log("connected to database ");
   }
 );
 const db = mongoose.connection;
