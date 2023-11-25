@@ -12,12 +12,12 @@ mongoose.connect(
   process.env.MONGO,
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
   },
   () => {
     console.log("connected to database ");
   }
 );
+
 const db = mongoose.connection;
 
 db.on("error", () => {
