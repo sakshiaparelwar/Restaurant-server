@@ -9,8 +9,11 @@ dotenv.config();
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
-  "mongodb+srv://sakshi:dbsakshi1234@cluster0.nkp4liz.mongodb.net/",
-
+  process.env.MONGO,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
   () => {
     console.log("connected to database ");
   }
