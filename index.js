@@ -9,7 +9,7 @@ dotenv.config();
 
 mongoose.set("strictQuery", true);
 mongoose.connect(
-  process.env.MONGO,
+  "mongodb+srv://sakshi:dbsakshi1234@cluster0.nkp4liz.mongodb.net/",
 
   () => {
     console.log("connected to database ");
