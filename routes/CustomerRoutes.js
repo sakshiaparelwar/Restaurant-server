@@ -3,11 +3,10 @@ const router = express.Router();
 const customerSchema = require("../schema/customerSchema");
 const bcrypt = require("bcrypt");
 
-const salt = 10;
 router.post("/create-customers", (req, res, next) => {
   const { name, phone, email, password } = req.body;
   bcrypt
-    .hash(password, salt)
+    .hash(password, 10)
     .then((hash) => {
       customerSchema.create(
         { name, phone, email, password: hash },
