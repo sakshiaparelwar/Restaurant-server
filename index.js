@@ -9,10 +9,17 @@ dotenv.config();
 
 mongoose.set("strictQuery", true);
 // console.log(process.env.REACT_APP_MONGO);
-mongoose.connect(process.env.REACT_APP_MONGO, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(process.env.REACT_APP_MONGO, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected successfully");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 const db = mongoose.connection;
 
 db.on("error", () => {
