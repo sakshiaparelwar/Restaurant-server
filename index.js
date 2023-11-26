@@ -19,7 +19,7 @@ mongoose.connect(
     try {
       console.log("connected successfully");
     } catch (err) {
-      console.log(err);
+      console.log(err.response.data);
     }
   }
 );
