@@ -38,11 +38,13 @@ router.post("/login", (req, res, next) => {
   const { name, email, password } = req.body;
   customerSchema.findOne({ email }).then((customer) => {
     if (customer) {
-      if (customer.password === password) {
-        res.json("You have login successfully");
-      } else {
-        res.json("no record founds");
-      }
+      bcrypt.compare(password, customer.password, (err, response) => {
+        if (response) {
+          res.json("You have login successfully");
+        } else {
+          res.json("Password is incorrect!!!");
+        }
+      });
     } else {
       res.json("Please signin first");
     }
