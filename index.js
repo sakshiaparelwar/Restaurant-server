@@ -13,6 +13,7 @@ mongoose
   .connect(process.env.REACT_APP_MONGO, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    connectTimeoutMS: 30000,
   })
   .then(() => {
     console.log("Connected successfully");
