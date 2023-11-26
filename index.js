@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 mongoose.set("strictQuery", true);
+// console.log(process.env.REACT_APP_MONGO);
 mongoose.connect(
   process.env.REACT_APP_MONGO,
   {
@@ -15,7 +16,11 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
   () => {
-    console.log("connected to database ");
+    try {
+      console.log("connected successfully");
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
