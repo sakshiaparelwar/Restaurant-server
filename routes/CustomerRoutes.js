@@ -5,14 +5,24 @@ const bcrypt = require("bcrypt");
 
 const salt = 10;
 router.post("/create-customers", (req, res, next) => {
-  bcrypt.hash(req.body.password, salt);
-  customerSchema.create(req.body, (err, data) => {
-    if (err) {
-      return next(err);
-    } else {
-      return res.json(data);
-    }
-  });
+  const { name, phone, email, password } = req.body;
+  bcrypt
+    .hash(password, salt)
+    .then((hash) => {
+      customerSchema.create(
+        { name, phone, email, password: hash },
+        (err, data) => {
+          if (err) {
+            return next(err);
+          } else {
+            return res.json(data);
+          }
+        }
+      );
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 });
 
 router.get("/", (req, res, next) => {
